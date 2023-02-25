@@ -32,10 +32,9 @@
                         <TextInput
                             id="name"
                             type="name"
-                            class="mt-2 block w-full p-1"
+                            class="mt-2 block w-full p-2"
                             v-model="form.name"
                             required
-                            autofocus
                             autocomplete="username"
                         />
                         <InputError class="mt-2" :message="form.errors.name" />
