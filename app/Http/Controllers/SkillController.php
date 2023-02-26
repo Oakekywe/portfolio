@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\SkillResource;
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class SkillController extends Controller
@@ -70,9 +71,9 @@ class SkillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Skill $skill)
     {
-        //
+        return Inertia::render('Skills/Edit', compact('skill'));
     }
 
     /**
@@ -82,9 +83,21 @@ class SkillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Skill $skill)
     {
-        //
+        $image= $skill->image;
+        $request->validate([
+            'name'=>['required','min:3']
+        ]);
+        if($request->hasFile('image')){
+            Storage::delete($request->image);
+            $image= $request->file('image')->store('skills');
+        }
+        $skill->update([
+            'name'=> $request->name,
+            'image'=> $image
+        ]);
+        return redirect()->route('skills.index');
     }
 
     /**
@@ -93,8 +106,11 @@ class SkillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Skill $skill)
     {
-        //
+        Storage::delete($skill->image);
+        $skill->delete();
+        
+        return redirect()->route('skills.index');
     }
 }
