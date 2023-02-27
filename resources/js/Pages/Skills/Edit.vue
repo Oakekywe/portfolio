@@ -48,7 +48,7 @@
                             required
                             autocomplete="username"
                         />
-                        <InputError class="mt-2" :message="form.errors.name" />
+                        <InputError class="mt-2" :message="$page.props.errors.name" />
                     </div>
 
                     <div class="mt-3">
@@ -59,7 +59,7 @@
                             class="mt-2 block w-full p-1"
                             @input="form.image= $event.target.files[0]"
                         />
-                        <InputError class="mt-2" :message="form.errors.image" />
+                        <InputError class="mt-2" :message="$page.props.errors.image" />
                     </div>
 
                     <div class="flex items-center justify-end mt-4">

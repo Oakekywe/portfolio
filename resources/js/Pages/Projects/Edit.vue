@@ -55,7 +55,7 @@
                         >
                             <option v-for="skill in skills" :key="skill.id" :value="skill.id">{{skill.name}}</option>
                         </select>
-                        <InputError class="mt-2" :message="form.errors.skill_id" />
+                        <InputError class="mt-2" :message="$page.props.errors.skill_id" />
                     </div>
                     <div class="mt-3">
                         <InputLabel for="name" value="Name" />
@@ -67,7 +67,7 @@
                             required
                             autocomplete="name"
                         />
-                        <InputError class="mt-2" :message="form.errors.name" />
+                        <InputError class="mt-2" :message="$page.props.errors.name" />
                     </div>
                     <div class="mt-3">
                         <InputLabel for="project_url" value="URL" />
@@ -78,7 +78,7 @@
                             v-model="form.project_url"
                             autocomplete="projecturl"
                         />
-                        <InputError class="mt-2" :message="form.errors.name" />
+                        <InputError class="mt-2" :message="$page.props.errors.name" />
                     </div>
 
                     <div class="mt-3">
@@ -89,7 +89,7 @@
                             class="mt-2 block w-full p-1"
                             @input="form.image= $event.target.files[0]"
                         />
-                        <InputError class="mt-2" :message="form.errors.image" />
+                        <InputError class="mt-2" :message="$page.props.errors.image" />
                     </div>
 
                     <div class="flex items-center justify-end mt-4">

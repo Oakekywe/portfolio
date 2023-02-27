@@ -33,7 +33,7 @@
             <div class="max-w-md mx-auto sm:px-6 lg:px-8 bg-white">
                 <form class="p-4" @submit.prevent="submit">
                     <div>
-                        <InputLabel for="project_url" value="Skills" />
+                        <InputLabel for="skill_id" value="Skills" />
                         <select 
                         v-model="form.skill_id" 
                         name="skill_id" 
@@ -44,6 +44,7 @@
                         >
                             <option v-for="skill in skills" :key="skill.id" :value="skill.id">{{skill.name}}</option>
                         </select>
+                        <InputError class="mt-2" :message="form.errors.skill_id" />
                     </div>
                     <div class="mt-3">
                         <InputLabel for="name" value="Name" />

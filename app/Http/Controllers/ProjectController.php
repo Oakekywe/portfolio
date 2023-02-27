@@ -54,7 +54,7 @@ class ProjectController extends Controller
                 'project_url'=> $request->project_url,
                 'skill_id'=> $request->skill_id
             ]);
-            return redirect()->route('projects.index');
+            return redirect()->route('projects.index')->with('message','New Project Created');
         }
         return back();
     }
@@ -96,7 +96,7 @@ class ProjectController extends Controller
             'project_url'=> $request->project_url,
             'skill_id'=> $request->skill_id
         ]);
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('message','Project Updated');
     }
 
     /**
@@ -109,6 +109,6 @@ class ProjectController extends Controller
     {
         Storage::delete($project->image);
         $project->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message','Project Deleted');
     }
 }
