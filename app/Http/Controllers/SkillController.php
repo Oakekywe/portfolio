@@ -111,6 +111,6 @@ class SkillController extends Controller
         Storage::delete($skill->image);
         $skill->delete();
         
-        return redirect()->route('skills.index');
+        return redirect()->back();
     }
 }

@@ -5,35 +5,46 @@
     import InputLabel from '@/Components/InputLabel.vue';
     import PrimaryButton from '@/Components/PrimaryButton.vue';
     import TextInput from '@/Components/TextInput.vue';
-    defineProps({
+    import { router } from '@inertiajs/vue3'
+
+    const props= defineProps({
+        project: {},
         skills: []
     })
 
     const form = useForm({
-        name: '',
+        name: props.project?.name,
+        project_url: props.project?.project_url,
+        skill_id: props.project?.skill_id,
         image: null,
-        project_url: '',
-        skill_id: ''
     });
 
     const submit = () => {
-        form.post(route('projects.store'));
+        router.post(`/projects/${props.project.id}`, {
+            _method: 'put',
+            name: form.name,
+            image: form.image,
+            project_url: form.project_url,
+            skill_id: form.skill_id
+        })
     };
+
+    
 </script>
 
 <template>
-  <Head title="New Project" />
+  <Head title="Edit Project" />
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">New Project</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Edit Project</h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-md mx-auto sm:px-6 lg:px-8 bg-white">
                 <form class="p-4" @submit.prevent="submit">
                     <div>
-                        <InputLabel for="project_url" value="Skills" />
+                        <InputLabel for="project_url" value="Skill" />
                         <select 
                         v-model="form.skill_id" 
                         name="skill_id" 
@@ -44,6 +55,7 @@
                         >
                             <option v-for="skill in skills" :key="skill.id" :value="skill.id">{{skill.name}}</option>
                         </select>
+                        <InputError class="mt-2" :message="form.errors.skill_id" />
                     </div>
                     <div class="mt-3">
                         <InputLabel for="name" value="Name" />
@@ -83,7 +95,7 @@
                     <div class="flex items-center justify-end mt-4">
 
                         <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                            Store
+                            Update
                         </PrimaryButton>
                     </div>
                 </form>
