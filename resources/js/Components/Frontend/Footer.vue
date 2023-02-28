@@ -9,7 +9,7 @@
                 <div class="flex spcae-x-6 items-center justify-center">
                     <img src="http://localhost:8000/img/logo.png" class="h-6 mr-3 sm:h-14" />
                 </div>
-                <p class="text-paragraph opacity-80 text-[15px]">
+                <p class="text-paragraph opacity-80 text-[15px] dark:text-slate-300">
                     &copy; 2023 Design By Oake Kywe Phyo Han 
                 </p>
             </div>
