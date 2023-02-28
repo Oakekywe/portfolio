@@ -2,6 +2,7 @@
 import FrontendVue from '@/Layouts/Frontend.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import FrontendLayout from '@/Layouts/Frontend.vue'
+import Hero from '@/Components/Frontend/Hero.vue';
 
 </script>
 
@@ -9,6 +10,7 @@ import FrontendLayout from '@/Layouts/Frontend.vue'
     <Head title="Portfolio" />
     <FrontendLayout> 
         <!-- Hero primary -->
+        <Hero />
         <!-- Promote tail-100 -->
         <!-- About secondary -->
         <!-- Skills tail-100 -->
