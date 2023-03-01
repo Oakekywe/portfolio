@@ -6,9 +6,13 @@ import Hero from '@/Components/Frontend/Hero.vue';
 import Promote from '@/Components/Frontend/Promote.vue';
 import About from '@/Components/Frontend/About.vue';
 import Skills from '@/Components/Frontend/Skills.vue';
-defineProps({
-    skills: {}
-})
+import Portfolio from '@/Components/Frontend/Portfolio.vue';
+
+const test= defineProps({
+        projects:{},
+        skills:{}
+    })
+    console.log(test.skills);
 
 </script>
 
@@ -24,6 +28,7 @@ defineProps({
         <!-- Skills tail-100 -->
         <Skills :skills="skills" />
         <!-- Portfolio primary -->
+        <Portfolio :skills="skills" :projects="projects" />
         <!-- Services secondary -->
         <!-- Contact primary -->
     </FrontendLayout>
