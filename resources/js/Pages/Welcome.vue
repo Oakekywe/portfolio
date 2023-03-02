@@ -8,11 +8,11 @@ import About from '@/Components/Frontend/About.vue';
 import Skills from '@/Components/Frontend/Skills.vue';
 import Portfolio from '@/Components/Frontend/Portfolio.vue';
 
-const test= defineProps({
-        projects:{},
-        skills:{}
-    })
-    console.log(test.skills);
+defineProps({
+    projects:{},
+    skills:{}
+})
+
 
 </script>
 
